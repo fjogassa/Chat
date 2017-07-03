@@ -1,3 +1,4 @@
+import { AuthService } from './../../service/auth-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -12,8 +13,12 @@ export class ChatPage {
   lista: FirebaseListObservable<any>;
   mensagem: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public af: AngularFireDatabase) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public af: AngularFireDatabase, public authService: AuthService) {
+    console.log(authService.getCurrentUser.name);
+    
     this.lista=af.list("https://chat-ionic-a0a18.firebaseio.com/chat")
+    
   }
 
   enviarMsg() {
@@ -26,6 +31,10 @@ export class ChatPage {
       this.mensagem = "";
       }
     )
+  }
+
+  logoff() {
+    
   }
 
 }
