@@ -12,20 +12,23 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any;
+  rootPage: any;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, autenticador: AngularFireAuth) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, afAuth: AngularFireAuth) {
 
-      const authObserver = autenticador.authState.subscribe(user => {
+    console.log("constructor MyApp");
+
+      const authObserver = afAuth.authState.subscribe(user => {
       if (user) {
+        console.log("Logou");
         this.rootPage = ChatPage;
         authObserver.unsubscribe();
       } else {
+        console.log("Else");
         this.rootPage = SigninPage;
         authObserver.unsubscribe();
       }
     });
-
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

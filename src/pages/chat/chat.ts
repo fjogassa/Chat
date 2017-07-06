@@ -13,11 +13,12 @@ export class ChatPage {
   lista: FirebaseListObservable<any>;
   mensagem: string;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public af: AngularFireDatabase, public authService: AuthService) {
-    console.log(authService.getCurrentUser.name);
+  constructor(public navCtrl: NavController, public navParams: NavParams, public af: AngularFireDatabase, private authService: AuthService) {
     
-    this.lista=af.list("https://chat-ionic-a0a18.firebaseio.com/chat")
+    console.log("constructor ChatPage");
+    console.log(authService.getCurrentUser().email);
+    
+    this.lista=af.list("https://chat-ionic-a0a18.firebaseio.com/chat");
     
   }
 
@@ -34,7 +35,7 @@ export class ChatPage {
   }
 
   logoff() {
-    
+    this.authService.signOut();
   }
 
 }

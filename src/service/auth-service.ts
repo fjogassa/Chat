@@ -10,28 +10,30 @@ export class AuthService {
   user: Observable<firebase.User>;
   auth: AngularFireAuth;
 
-  constructor(private angularFireAuth: AngularFireAuth) {
+  constructor(private angularFireAuth: AngularFireAuth) {    
     this.user = angularFireAuth.authState;
     this.auth = angularFireAuth;
+
+    console.log("constructor AuthService");
   }
 
-  createUser(user: User) {
+  createUser(user: User): firebase.Promise<any> {
     return this.angularFireAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
   }
 
-  signIn(user: User) {
+  signIn(user: User): firebase.Promise<any> {
     return this.angularFireAuth.auth.signInWithEmailAndPassword(user.email, user.password);
   }
 
-  signOut() {
+  signOut(): firebase.Promise<any> {
     return this.angularFireAuth.auth.signOut();
   }
 
-  resetPassword(email: string) {
+  resetPassword(email: string): firebase.Promise<any> {
     return this.angularFireAuth.auth.sendPasswordResetEmail(email);
   }
 
   getCurrentUser() {
-    return this.auth.auth.currentUser;
+    return this.angularFireAuth.auth.currentUser;
   }
 }

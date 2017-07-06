@@ -18,6 +18,8 @@ export class SignupPage {
     public navCtrl: NavController,
     private toastCtrl: ToastController,
     private authService: AuthService) {
+
+      console.log("constructor SignupPage");
   }
 
   createAccount() {

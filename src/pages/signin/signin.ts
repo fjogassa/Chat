@@ -20,6 +20,7 @@ export class SigninPage {
     public navCtrl: NavController,
     private toastCtrl: ToastController,
     private authService: AuthService) {
+      console.log("constructor SigninPage");
   }
 
   createAccount() {

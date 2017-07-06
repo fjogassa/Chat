@@ -16,6 +16,7 @@ export class ResetpasswordPage {
     public navCtrl: NavController,
     private toastCtrl: ToastController,
     private authService: AuthService) {
+      console.log("constructor ResetPasswordPage");
   }
 
   resetPassword() {

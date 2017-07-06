@@ -18,13 +18,12 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 export const firebaseConfig = {
   
   // Initialize Firebase
-  apiKey: "AIzaSyD-GbMrKwYQWOFOMdwbmZLiwue9JpsCLt4",
-  authDomain: "chat-ionic-a0a18.firebaseapp.com",
-  databaseURL: "https://chat-ionic-a0a18.firebaseio.com",
-  projectId: "chat-ionic-a0a18",
-  storageBucket: "chat-ionic-a0a18.appspot.com",
-  messagingSenderId: "917140940602"
-
+    apiKey: "AIzaSyD-GbMrKwYQWOFOMdwbmZLiwue9JpsCLt4",
+    authDomain: "chat-ionic-a0a18.firebaseapp.com",
+    databaseURL: "https://chat-ionic-a0a18.firebaseio.com",
+    projectId: "chat-ionic-a0a18",
+    storageBucket: "chat-ionic-a0a18.appspot.com",
+    messagingSenderId: "917140940602"
 };
 
 @NgModule({
