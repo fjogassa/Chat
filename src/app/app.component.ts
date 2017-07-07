@@ -14,17 +14,18 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class MyApp {
   rootPage: any;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, afAuth: AngularFireAuth) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
+    afAuth: AngularFireAuth) {
 
     console.log("constructor MyApp");
 
-      const authObserver = afAuth.authState.subscribe(user => {
+    const authObserver = afAuth.authState.subscribe(user => {
       if (user) {
         console.log("Logou");
         this.rootPage = ChatPage;
         authObserver.unsubscribe();
       } else {
-        console.log("Else");
+        console.log("Não Logou");
         this.rootPage = SigninPage;
         authObserver.unsubscribe();
       }

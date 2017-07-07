@@ -21,11 +21,11 @@
     <ion-item>
       <button ion-button (click)="enviarMsg()">Enviar</button>
     </ion-item>
-    <ion-item *ngFor="let item of lista | async">
-      <p>{{item.data}}: {{item.texto}}</p>
-      <ion-note item-right>
-        {{item.data | date:'HH:mm'}}
-      </ion-note>
+    <ion-item *ngFor="let item of lista | async">      
+      <p>{{item.username}} >> {{item.texto}}</p>
+      <ion-note item-left>
+        {{item.data | date:'dd/MM/yyyy HH:mm'}}
+      </ion-note>      
     </ion-item>
   </ion-list>
 </ion-content>

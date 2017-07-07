@@ -1,3 +1,4 @@
+import { SigninPage } from './../signin/signin';
 import { AuthService } from './../../service/auth-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -13,19 +14,18 @@ export class ChatPage {
   lista: FirebaseListObservable<any>;
   mensagem: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public af: AngularFireDatabase, private authService: AuthService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public af: AngularFireDatabase, private authService: AuthService) {
     
     console.log("constructor ChatPage");
-    console.log(authService.getCurrentUser().email);
-    
-    this.lista=af.list("https://chat-ionic-a0a18.firebaseio.com/chat");
-    
+    this.lista = af.list("https://chat-ionic-a0a18.firebaseio.com/chat");
   }
 
   enviarMsg() {
     let msg = {
       texto: this.mensagem,
-      data: new Date()
+      data: new Date().toISOString(),
+      username: this.authService.getCurrentUser().email
     };
     
     this.lista.push(msg).then(()=> {
@@ -36,6 +36,7 @@ export class ChatPage {
 
   logoff() {
     this.authService.signOut();
+    this.navCtrl.setRoot(SigninPage);
   }
 
 }

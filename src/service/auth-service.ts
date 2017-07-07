@@ -25,8 +25,9 @@ export class AuthService {
     return this.angularFireAuth.auth.signInWithEmailAndPassword(user.email, user.password);
   }
 
-  signOut(): firebase.Promise<any> {
-    return this.angularFireAuth.auth.signOut();
+  signOut(): firebase.Promise<void> {
+    return firebase.auth().signOut();
+    //return this.angularFireAuth.auth.signOut();
   }
 
   resetPassword(email: string): firebase.Promise<any> {
